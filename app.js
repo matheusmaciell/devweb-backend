@@ -1,13 +1,23 @@
 const express = require('express')
 const app = express();
 const router = express.Router();
+const bodyParser = require('body-parser');
 var morgan = require('morgan');
 
+// faz o parse de requisições com o corpo do tipo application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
+// faz o parse de requisições com o corpo do tipo application/json
+app.use(bodyParser.json());
 
-//app.get('/user', function(req, res) {
-//  res.status(200).json({ name: 'john' });
-//});
+app.use(function (req, res, next) {
+    res.header('Content-Type', 'application/json');
+    next();  // sem o next, a chamada para aqui
+});
+app.post('/', function (req, res) {
+  // aqui estamos devolvendo ao cliente o corpo da requisição POST realizada pelo mesmo.
+  res.end(JSON.stringify(req.body, null, 2))
+});
 
 const home = require('./home');
 const user = require('./user/userRoute');
