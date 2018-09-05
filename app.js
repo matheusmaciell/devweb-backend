@@ -4,15 +4,15 @@ const router = express.Router();
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
 
-app.get('/user', function(req, res) {
-  res.status(200).json({ name: 'john' });
-});
+//app.get('/user', function(req, res) {
+//  res.status(200).json({ name: 'john' });
+//});
 
-const index = require('./routes/index');
-const user = require('./routes/user');
-const classe = require('./routes/class');
-const school = require('./routes/school');
-app.use('/', index);
+const home = require('./home');
+const user = require('./user/userRoute');
+const classe = require('./class/classRoute');
+const school = require('./school/schoolRoute');
+app.use('/',home);
 app.use('/user', user);
 app.use('/class',classe);
 app.use('/school',school);
