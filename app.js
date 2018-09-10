@@ -6,7 +6,10 @@ var morgan = require('morgan');
 var http = require('http');
 var server = http.createServer(app);
 var cache = require('memory-cache');
+var mongoose = require('mongoose');
+var config = require('./config/bd.js')
 
+mongoose.connect(config.local_url, { useNewUrlParser: true });
 
 // faz o parse de requisições com o corpo do tipo application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,31 +60,7 @@ cache.put('houdini', 'disappear', 100, function(key, value) {
 }); // Time in ms
  
 console.log('Houdini will now ' + cache.get('houdini'));
+
  
-setTimeout(function() {
-    console.log('Houdini is ' + cache.get('houdini'));
-}, 200);
- 
- 
-// create new cache instance
-var newCache = new cache.Cache();
- 
-newCache.put('foo', 'newbaz');
- 
-setTimeout(function() {
-  console.log('foo in old cache is ' + cache.get('foo'));
-  console.log('foo in new cache is ' + newCache.get('foo'));
-}, 200);
-
-
-
-
-
-
-
-
-
-
-
 //app.listen(3000, () => console.log('Example app listening on port 3000!'))
 module.exports = app;
