@@ -1,17 +1,23 @@
+var User = require('../models/user');
 
-var users = [
-  user1 = {
-    id: 1,
-    nome: 'Pabllo vitar',
-},
-  user2 = {
-    id: 2,
-    nome: 'Anitta',
-}];
-
-
-exports.get = (req, res, next) => {
-
-    const response = req.params.id ? users[req.params.id -1] : users
-    res.status(201).send(response);
+exports.index = (req, res) => {
+  User.find({})
+	  .catch((err) => {
+	    res.status(RequestStatus.BAD_REQUEST).send(err);
+	  })
+	  .then((result) => {
+	    res.status(RequestStatus.OK).json(result);
+	  });
 };
+
+
+exports.create = (req,res) =>{
+	var user = new User(req.body);
+	user.save(function (err, user) {
+  		if (err) return console.error(err);
+});
+
+
+};
+
+

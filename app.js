@@ -46,21 +46,5 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
-
- 
-// usando a cache, que funciona do tipo (chave,valor)
- 
-cache.put('gostosa', 'MATHEUS GOSTOSA MACIEL');
-console.log(cache.get('gostosa'));
- 
-// that wasn't too interesting, here's the good part
- 
-cache.put('houdini', 'disappear', 100, function(key, value) {
-    console.log(key + ' did ' + value);
-}); // Time in ms
- 
-console.log('Houdini will now ' + cache.get('houdini'));
-
- 
 //app.listen(3000, () => console.log('Example app listening on port 3000!'))
 module.exports = app;
