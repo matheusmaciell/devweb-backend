@@ -1,16 +1,25 @@
-var classes = [
-  school = {
-    id: 1,
-    nome: "1 A",
-},
-  user2 = {
-    id: 2,
-    nome: '2 b',
-}];
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 
-exports.get = (req, res, next) => {
+var UserSchema = new mongoose.Schema({
+  UserName: {
+		type: String,
+		required: true,
+		unique: true
+	},	
+   password: {
+	 	type: String,
+	 	required: true,
+	 	unique: false
+	 },
+   userEmail: {
+	 	type: String,
+	 	required: false,
+		unique: true
+	 }, 	
+ });
 
-    const response = req.params.id ? classes[req.params.id -1] : classes
-    res.status(201).send(response);
-};
+var User = mongoose.model('User', UserSchema);
+
+module.exports = User;
