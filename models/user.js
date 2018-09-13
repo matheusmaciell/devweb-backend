@@ -5,20 +5,20 @@ var Schema = mongoose.Schema;
 var UserSchema = new mongoose.Schema({
   UserName: {
 		type: String,
-		required: true
+		required: false
 	},	
- //  password: {
-	// 	type: String,
-	// 	required: true,
-	// 	unique: false
-	// },
- //  userEmail: {
-	// 	type: String,
-	// 	required: true,
-	// 	unique: true
-	// }, 	
+   password: {
+	 	type: String,
+	 	required: true,
+	 	unique: false
+	 },
+   userEmail: {
+	 	type: String,
+	 	required: false,
+		unique: false
+	 }, 	
  });
 
-var user = mongoose.model('user', UserSchema);
+var User = mongoose.model('User', UserSchema);
 
-module.exports = user;
+module.exports = User;

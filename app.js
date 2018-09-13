@@ -9,7 +9,7 @@ var cache = require('memory-cache');
 var mongoose = require('mongoose');
 var config = require('./config/bd.js')
 
-mongoose.connect(config.local_url, { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/top', { useNewUrlParser: true });
 
 // faz o parse de requisições com o corpo do tipo application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
