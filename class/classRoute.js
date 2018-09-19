@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require('./controllerClass');
 
 
-router.get ('/', controller.get);
-router.get('/:id',controller.get);
+router.get ('/', controller.index);
+router.get('/:id',controller.index);
 
 module.exports = router;

@@ -17,7 +17,8 @@ var UserSchema = new mongoose.Schema({
 	 	type: String,
 	 	required: false,
 		unique: true
-	 }, 	
+	 },
+	students: [{ type: Schema.Types.ObjectId, ref: 'user' }]	  	
  });
 
 var User = mongoose.model('User', UserSchema);

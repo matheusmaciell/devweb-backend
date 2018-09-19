@@ -1,4 +1,5 @@
 var School = require('../models/school');
+var Class = require('../models/class');
 const OK_STATUS = 200;
 const BAD_REQUEST_STATUS = 400;
 const UNAUTHORIZED_STATUS = 401;
@@ -6,6 +7,20 @@ const FORBIDDEN_STATUS = 403;
 const NOT_FOUND_STATUS = 404;
 const UNPROCESSABLE_ENTITY_STATUS = 422;
 const INTERNAL_SERVER_ERROR_STATUS = 500;
+
+
+exports.showClass = (req,res) =>{
+	School.findById(req.params.school_id)
+	.then((School) => {
+		
+		res.status(OK_STATUS).json(School.classes);
+	})
+	.catch((error) => {
+		res.status(BAD_REQUEST_STATUS).json(error);
+	});		
+};
+
+
 
 exports.index = (req, res) => {
   School.find({})
@@ -18,7 +33,7 @@ exports.index = (req, res) => {
 };
 
 exports.show = (req, res) => {
-	School.findById(req.params.School_id)
+	School.findById(req.params.school_id)
 		.then((School) => {
 			res.status(OK_STATUS).json(School);
 		})

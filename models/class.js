@@ -20,6 +20,6 @@ var classSchema = new mongoose.Schema({
 	}, 	
  });
 
-var Class = mongoose.model('Class', ClassSchema);
+var Class = mongoose.model('Class', classSchema);
 
 module.exports = Class;

@@ -17,9 +17,10 @@ var schoolSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true
-	}, 	
+	}, 
+	classes: [{ type: Schema.Types.ObjectId, ref: 'Class' }]	
  });
 
-var School = mongoose.model('school', SchoolSchema);
+var School = mongoose.model('school', schoolSchema);
 
 module.exports = School;

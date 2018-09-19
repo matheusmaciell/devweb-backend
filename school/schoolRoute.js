@@ -8,5 +8,7 @@ router.post('/', controller.create);
 router.get('/:school_id',controller.show);
 router.put('/:school_id', controller.update);
 router.delete('/:school_id', controller.delete);
+router.get('/:school_id/class',controller.showClass);
+
 
 module.exports = router;

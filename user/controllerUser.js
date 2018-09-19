@@ -18,9 +18,9 @@ exports.index = (req, res) => {
 };
 
 exports.show = (req, res) => {
-	User.findById(req.params.user_id)
-		.then((user) => {
-			res.status(OK_STATUS).json(user);
+	User.findById(req.params.User_id)
+		.then((User) => {
+			res.status(OK_STATUS).json(User);
 		})
 		.catch((error) => {
 			res.status(BAD_REQUEST_STATUS).json(error);
@@ -28,8 +28,8 @@ exports.show = (req, res) => {
 };
 
 exports.create = (req,res) =>{
-	var user = new User(req.body);
-	user.save((err) => {
+	var userc = new User(req.body);
+	userc.save((err) => {
 			if (err && err.name === 'MongoError' && err.code === 11000) {
 				  res.status(FORBIDDEN_STATUS).send(err);
 	  } else {
@@ -38,7 +38,7 @@ exports.create = (req,res) =>{
 		});
 };
 exports.update = (req, res) => {
-	User.updateOne({ _id: req.params.user_id }, { $set: req.body })
+	user.updateOne({ _id: req.params.User_id }, { $set: req.body })
 		.then(() => {
 			res.status(OK_STATUS).send('User updated!');
 		})
@@ -48,7 +48,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-	User.deleteOne({ _id: req.params.user_id })
+	User.deleteOne({ _id: req.params.User_id })
 		.then(() => {
 			res.status(OK_STATUS).send('User deleted.');
 		})
