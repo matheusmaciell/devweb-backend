@@ -18,7 +18,7 @@ exports.index = (req, res) => {
 };
 
 exports.show = (req, res) => {
-	User.findById(req.params.User_id)
+	User.findById(req.params.user_id)
 		.then((User) => {
 			res.status(OK_STATUS).json(User);
 		})
@@ -55,6 +55,9 @@ exports.delete = (req, res) => {
 		.catch((error) => {
 			res.status(BAD_REQUEST_STATUS).send(error);
 		});
+};
+exports.getUserByEmail = (userEmail) => {
+	return User.findOne({'userEmail': userEmail});
 };
 
 

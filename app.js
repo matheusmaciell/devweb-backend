@@ -30,9 +30,10 @@ const home = require('./home');
 const user = require('./user/userRoute');
 const classe = require('./class/classRoute');
 const school = require('./school/schoolRoute');
-
+const auth = require ('./auth/auth.router');
 app.use(morgan('tiny'));
 app.use('/',home);
+app.use('/auth',auth);
 app.use('/user', user);
 app.use('/class',classe);
 app.use('/school',school);
