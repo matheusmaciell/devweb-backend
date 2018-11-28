@@ -21,6 +21,14 @@ app.use(function (req, res, next) {
     res.header('Content-Type', 'application/json');
     next();  // sem o next, a chamada para aqui
 });
+
+app.use(function(req, res, next) {
+// res.header('Access-Control-Allow-Credentials', true);
+res.header('Access-Control-Allow-Origin', req.headers.origin);
+// res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+// res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+ });
+
 app.post('/', function (req, res) {
   // aqui estamos devolvendo ao cliente o corpo da requisição POST realizada pelo mesmo.
   res.end(JSON.stringify(req.body, null, 2))
@@ -42,7 +50,7 @@ app.use('/school',school);
 app.use('/imagem',express.static(__dirname+'/static'))
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9000;
 
 server.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
