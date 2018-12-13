@@ -8,6 +8,7 @@ const UNPROCESSABLE_ENTITY_STATUS = 422;
 const INTERNAL_SERVER_ERROR_STATUS = 500;
 
 exports.index = (req, res) => {
+
   User.find({})
 	  .catch((err) => {
 	    res.status(400).send(err);
@@ -53,11 +54,9 @@ exports.delete = (req, res) => {
 			res.status(OK_STATUS).send('User deleted.');
 		})
 		.catch((error) => {
-			res.status(BAD_REQUEST_STATUS).send(error);
+			res.status(BAD_REQUEST_STATUS).send("deu errado");
 		});
 };
 exports.getUserByEmail = (userEmail) => {
 	return User.findOne({'userEmail': userEmail});
 };
-
-

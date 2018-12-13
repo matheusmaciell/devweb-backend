@@ -7,7 +7,7 @@ var UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true
-	},	
+	},
    password: {
 	 	type: String,
 	 	required: true,
@@ -18,7 +18,23 @@ var UserSchema = new mongoose.Schema({
 	 	required: false,
 		unique: true
 	 },
-	students: [{ type: Schema.Types.ObjectId, ref: 'user' }]	  	
+   about:{
+     type: String,
+     required: false,
+     unique:false
+   },
+  city: {
+    type: String,
+    required: false,
+    unique: false
+  },
+  address: {
+    type: String,
+    require: false,
+    unique: false
+  },
+  school: { type: Schema.Types.ObjectId, ref: 'school' },
+  class: { type: Schema.Types.ObjectId, ref: 'class' }
  });
 
 var User = mongoose.model('User', UserSchema);

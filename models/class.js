@@ -7,17 +7,13 @@ var classSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		unique: true
-	},	
+	},
   password: {
 		type: String,
 		required: true,
 		unique: false
 	},
-  classEmail: {
-		type: String,
-		required: true,
-		unique: true
-	}, 	
+  studants : [{ type: Schema.Types.ObjectId, ref: 'User' }]	
  });
 
 var Class = mongoose.model('Class', classSchema);
